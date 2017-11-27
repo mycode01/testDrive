@@ -6,6 +6,6 @@ class Config:
     MONGOALCHEMY_SERVER = '192.168.99.1'
     MONGOALCHEMY_PORT = 27017
     MONGOALCHEMY_USER = 'testUser'
-    MONGOALCHEMY_PASSWORD = quote('xpfk@dkagh!2#')
+    MONGOALCHEMY_PASSWORD = quote('')
 
 
