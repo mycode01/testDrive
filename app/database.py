@@ -2,13 +2,13 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-engine = create_engine('connectionstring',
+engine = create_engine('mysql+pymysql://root:root@dkagh!2#@14.63.173.26/apitest?charset=utf8',
                        echo=True, encoding='utf-8', convert_unicode=True)
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
                                          bind=engine))
 
-engine2 = create_engine('connectionstring2',
+engine2 = create_engine('mysql+pymysql://root:root@dkagh!2#@14.63.173.26/cfs2?charset=utf8',
                         echo=True, encoding='utf-8', convert_unicode=True)
 db_session2 = scoped_session(sessionmaker(autocommit=False,
                                           autoflush=False, bind=engine2))

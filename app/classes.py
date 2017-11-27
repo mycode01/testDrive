@@ -1,8 +1,7 @@
-from flask_restful import Resource
+from .database import db_session as cfs, db_session2 as cfs2
 from flask import jsonify
-from database import db_session as cfs, db_session2 as cfs2
-from models import api_key, t_fund_items
-
+from flask_restful import Resource
+from app.models import api_key, t_fund_items, c_code
 
 class Keys(Resource):
     def get(self):
@@ -17,4 +16,13 @@ class Funds(Resource):
         q = cfs2.query(t_fund_items).filter(t_fund_items.status == "2")
         e = [dict(title=m.title, fundsid=m.fundsID, status=m.status, targetAmt=m.targetAmount) for m in q]
         return jsonify(e)
+
+
+class Common(Resource):
+    def get(self, st):
+        # if type(st) == str
+        q = cfs2.query(c_code).filter(c_code.cd_name == st)
+        e = [dict(cd=m.cd, cd_val=m.cd_val, cd_name=m.cd_name) for m in q]
+        return jsonify(e)
+
 
